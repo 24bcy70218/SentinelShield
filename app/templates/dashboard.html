@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="row">
+
+    <div class="col-md-3">
+    <div class="card shadow border-0">
+        <div class="card-body">
+
+            <h5 class="text-center">🖥 CPU Usage</h5>
+
+            <h2 class="text-center" id="cpu">{{ system.cpu }}%</h2>
+
+            <div class="progress mt-2">
+
+                <div
+                    id="cpu-bar"
+                    class="progress-bar bg-success"
+                    role="progressbar"
+                    style="width: {{ system.cpu }}%;"
+                >
+                    {{ system.cpu }}%
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+    <div class="col-md-3">
+        <div class="card shadow border-0">
+            <div class="card-body text-center">
+                <h5>💾 RAM Usage</h5>
+                <h2 id="ram">{{ system.memory }}%</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card shadow border-0">
+            <div class="card-body text-center">
+                <h5>⚙ Running Processes</h5>
+                <h2 id="process">{{ system.processes }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card shadow border-0">
+           <div class="card-body text-center">
+               <h5>💽 Disk Usage</h5>
+               <h2 id="disk">{{ system.disk }}%</h2>
+           </div>
+        </div>
+    </div>
+
+</div>
+
+<br>
+
+<div class="card shadow">
+
+    <div class="card-header">
+
+        Recent Activity
+
+    </div>
+
+    <div class="card-body">
+
+        <ul id="recent-events" class="list-group">
+
+           <li class="list-group-item">
+               Loading security events...
+           </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+{% endblock %}
