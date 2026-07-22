@@ -216,3 +216,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# SentinelShield generated files
+logs/
+reports/
+
+# SQLite databases
+*.db
+
+# VS Code
+.vscode/
+
+# Windows
+Thumbs.db
