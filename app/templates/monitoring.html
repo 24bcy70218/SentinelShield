@@ -1,0 +1,283 @@
+{% extends "layout.html" %}
+
+{% block title %}Monitoring{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid mt-3">
+
+    <!-- Header -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-8">
+
+                    <h2 class="fw-bold text-primary">
+                        🖥 System Monitoring
+                    </h2>
+
+                    <p class="text-muted mb-0">
+                        Real-Time System Resource Monitoring
+                    </p>
+
+                </div>
+
+                <div class="col-md-4 text-md-end">
+
+                    <h5 id="monitorTime"></h5>
+
+                    <span class="badge bg-success fs-6">
+                        Live Monitoring
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Row 1 -->
+
+    <div class="row">
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h5>🖥 CPU Usage</h5>
+
+                    <h2 id="cpu">{{ system.cpu }}%</h2>
+
+                    <div class="progress mt-2">
+
+                        <div id="cpu-bar"
+                             class="progress-bar bg-success"
+                             style="width: {{ system.cpu }}%;">
+
+                            {{ system.cpu }}%
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h5>💾 RAM Usage</h5>
+
+                    <h2 id="memory">{{ system.memory }}%</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h5>⚙ Running Processes</h5>
+
+                    <h2 id="processes">{{ system.processes }}</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h5>💽 Disk Usage</h5>
+
+                    <h2 id="disk">{{ system.disk }}%</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Row 2 -->
+
+    <div class="row">
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h5>⬆ Upload</h5>
+
+                    <h2 id="upload">{{ system.upload }} MB</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h5>⬇ Download</h5>
+
+                    <h2 id="download">{{ system.download }} MB</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h5>💻 Hostname</h5>
+
+                    <h5 id="hostname">{{ system.hostname }}</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h5>⏱ Uptime</h5>
+
+                    <h5 id="uptime">{{ system.uptime }}</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Charts -->
+
+    <div class="row mt-4">
+
+        <div class="col-md-6">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-primary text-white">
+
+                    CPU Usage
+
+                </div>
+
+                <div class="card-body">
+
+                    <canvas id="cpuChart"></canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-success text-white">
+
+                    Memory Usage
+
+                </div>
+
+                <div class="card-body">
+
+                    <canvas id="memoryChart"></canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Process Table -->
+
+    <div class="card shadow mt-4">
+
+        <div class="card-header bg-dark text-white">
+
+            Running Processes
+
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-striped">
+
+                <thead>
+
+                <tr>
+
+                    <th>PID</th>
+                    <th>Name</th>
+                    <th>CPU %</th>
+                    <th>RAM %</th>
+
+                </tr>
+
+                </thead>
+
+                <tbody id="processTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="{{ url_for('static', filename='js/monitoring.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,155 @@
+{% extends "layout.html" %}
+
+{% block title %}Network{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid mt-3">
+
+    <!-- Header -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between align-items-center">
+
+                <div>
+
+                    <h2 class="fw-bold text-primary">
+                        🌐 Network Monitoring
+                    </h2>
+
+                    <p class="text-muted mb-0">
+                        Live monitoring of network activity and active connections.
+                    </p>
+
+                </div>
+
+                <span class="badge bg-success fs-6">
+                    Live
+                </span>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="row">
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <h6>Active Connections</h6>
+                    <h2 id="activeConnections">0</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <h6>Listening Ports</h6>
+                    <h2 id="listeningPorts">0</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <h6>Upload Speed</h6>
+                    <h2 id="uploadSpeed">0 KB/s</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <h6>Download Speed</h6>
+                    <h2 id="downloadSpeed">0 KB/s</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="card shadow border-0 mb-3">
+
+       <div class="card-header bg-dark text-white">
+
+           📊 Live Network Traffic
+
+        </div>
+
+        <div class="card-body">
+
+            <canvas id="networkChart" height="90"></canvas>
+
+        </div>
+
+    </div>
+
+    <!-- Search -->
+    <div class="card shadow border-0 mb-3">
+        <div class="card-body">
+
+            <input
+                class="form-control"
+                id="searchConnection"
+                placeholder="🔍 Search process, IP, port or status">
+
+        </div>
+    </div>
+
+    <!-- Connections Table -->
+    <div class="card shadow border-0">
+
+        <div class="card-header bg-dark text-white">
+
+            Active Network Connections
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-striped table-hover">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>PID</th>
+                            <th>Process</th>
+                            <th>Local Address</th>
+                            <th>Remote Address</th>
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="connectionTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/network.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Attack Intelligence Dashboard
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">
+        🌍 Attack Intelligence Dashboard
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-3">
+
+            <div class="card text-center">
+
+                <div class="card-body">
+
+                    <h5>Total Attacks</h5>
+
+                    <h2 id="totalAttacks">0</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card text-center">
+
+                <div class="card-body">
+
+                    <h5>Unique Attackers</h5>
+
+                    <h2 id="uniqueAttackers">0</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card text-center">
+
+                <div class="card-body">
+
+                    <h5>Top Attacker</h5>
+
+                    <h5 id="topAttacker">-</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card text-center">
+
+                <div class="card-body">
+
+                    <h5>Highest Count</h5>
+
+                    <h2 id="highestCount">0</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <table class="table table-bordered table-striped">
+
+        <thead>
+
+            <tr>
+
+                <th>IP</th>
+                <th>Count</th>
+                <th>Last Seen</th>
+                <th>Attack Types</th>
+                <th>Threat Score</th>
+                <th>Risk</th>
+                <th>Blocked</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="ipTable"></tbody>
+
+    </table>
+
+    <canvas id="attackChart"></canvas>
+    <br><br>
+
+    <h3>Attack Type Distribution</h3>
+
+    <div style="width:600px; height:600px; margin:auto;">
+    <canvas id="attackTypeChart"></canvas>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/ip_dashboard.js') }}"></script>
+
+
+
+{% endblock %}

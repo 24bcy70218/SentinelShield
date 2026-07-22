@@ -1,0 +1,170 @@
+{% extends "layout.html" %}
+
+{% block title %}Files{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid mt-3">
+
+    <!-- Header -->
+    <div class="card shadow-sm border-0 mb-4">
+
+        <div class="card-body">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-8">
+
+                    <h2 class="fw-bold text-primary">
+                        📁 File Integrity Monitoring
+                    </h2>
+
+                    <p class="text-muted mb-0">
+                        Monitor file creation, modification, deletion and movement.
+                    </p>
+
+                </div>
+
+                <div class="col-md-4 text-end">
+
+                    <span class="badge bg-success fs-6">
+                        Live Monitoring
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Cards -->
+
+    <div class="row">
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h5>Total Events</h5>
+
+                    <h2 id="totalEvents">0</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h5>Created</h5>
+
+                    <h2 id="createdEvents">0</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h5>Modified</h5>
+
+                    <h2 id="modifiedEvents">0</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h5>Deleted</h5>
+
+                    <h2 id="deletedEvents">0</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Search -->
+
+    <div class="card shadow border-0 mb-3">
+
+        <div class="card-body">
+
+            <input
+                type="text"
+                class="form-control"
+                id="searchFile"
+                placeholder="🔍 Search file path...">
+
+        </div>
+
+    </div>
+
+    <!-- Table -->
+
+    <div class="card shadow">
+
+        <div class="card-header bg-dark text-white">
+
+            Recent File Activity
+
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-striped table-hover">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Time</th>
+
+                        <th>Event</th>
+
+                        <th>Path</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="fileTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/files.js') }}"></script>
+
+{% endblock %}
