@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify, send_file
+from flask import Blueprint, render_template, jsonify, send_file, redirect, url_for
 from flask_login import login_required, current_user
 import os
 
@@ -28,7 +28,7 @@ main = Blueprint("main", __name__)
 
 @main.route("/")
 def home():
-    return render_template("index.html")
+    return redirect(url_for("auth.login"))
 
 
 @main.route("/dashboard")
